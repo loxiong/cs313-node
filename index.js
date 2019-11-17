@@ -1,4 +1,4 @@
-const home = require('example')
+const home = require('./views/pages/home')
 const cool = require('cool-ascii-faces')
 const express = require('express')
 const path = require('path')
