@@ -1,4 +1,4 @@
-const home = require('example.js')
+const home = require('example')
 const cool = require('cool-ascii-faces')
 const express = require('express')
 const path = require('path')
