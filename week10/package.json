@@ -1,0 +1,25 @@
+{
+  "name": "week10teamactivity",
+  "version": "1.0.0",
+  "description": "Week 10 Team Activity Family History",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/loxiong/cs313-node.git"
+  },
+  "author": "clo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/loxiong/cs313-node/issues"
+  },
+  "homepage": "https://github.com/loxiong/cs313-node#readme",
+  "dependencies": {
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "pg": "^7.14.0"
+  }
+}
