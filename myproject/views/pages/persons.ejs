@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src=".../queries.js"></script>
+</head>
+
+<body>
+
+    <div>
+            <h2>Show People</h2>
+            
+            <input type="text" id="name" placeholder="Name">
+            <br><br>
+            <button onclick="getPersons()">Show Persons</button>
+            
+            <br><br>
+            
+            <div>
+                <p id="results"></p>
+            </div>
+            
+    </div>
+    
+    <div>
+        <h2>Tasks Assigned to People</h2>
+
+        <form action=""><!--will post results below form-->
+            <select name="firstname" onchange="getPersons(this.value)">
+                <option value="">Select a person:</option>
+                <option value="mary">Mary</option>
+                <option value="john ">John</option>
+                <option value="amy">Amy</option>
+                <option value="amy">Adam</option>
+            </select>
+            <br><br>
+        </form>
+        <br>
+    </div>
+
+    <div id="txtHint">Customer info will be listed here...</div>
+        
+
+    <script>
+    function showCustomer(str) {
+          var xhttp;    
+          if (str == "") {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+          }
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "getcustomer.asp?q="+str, true);
+          xhttp.send();
+    }
+    </script>
+</body>
+</html>

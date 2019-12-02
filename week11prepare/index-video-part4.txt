@@ -1,0 +1,44 @@
+//import the express module
+const express = require('express');
+//create the path library
+const path = require('path');
+//import the controller file
+//the . tells it to look in the current directory and in the controllers folder
+const topicController = require('./controllers/topicController.js');
+
+//create the node application
+const app = express();
+
+//create a port variable to stipulate which port heroku is going to use
+//or else use PORT 5000 if port was not found at heroku
+const PORT = process.env.PORT || 5000;
+
+//access static files to be rendered or sent back to user
+//from the public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+//to support json encoded bodies
+//look for express json
+app.use(express.json());
+
+//helps to parse the body
+//to support url encoded bodies
+app.use(express.urlencoded({extended: true}));
+
+//anything below here sets up rules and function calls
+
+//from video Part-4
+//move all the functions in the get and post to the controller files
+//and then add the function back from the controller file
+app.get('/topics', topicController.getTopicList);
+
+//get a single topic by ID
+app.get('/topic/', topicController.getTopic);
+
+//how to do a post //test it in postman
+app.post('/topic', topicController.postTopic);
+
+//starts the server
+app.listen(PORT, function(){
+    console.log('Server listening on port ' + PORT);
+})

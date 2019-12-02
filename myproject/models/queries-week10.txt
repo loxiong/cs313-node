@@ -6,35 +6,13 @@ const pool = new Pool({connectionString: db_url});
 
 
 const getPersons = (request, response) => {
-    var sql = "SELECT * FROM person";
-
-    pool.query(sql, function(err, result) {
-        // If an error occurred...
-        if (err) {
-            console.log("Error in query: ")
-            console.log(err);
-        }
-
-        // Log this to the console for debugging purposes.
-        console.log("Back from DB with result:");
-        console.log(result.rows);
-        
-        var resultsList = document.getElementById("results");
-            resultsList.innerHTML = "";
-            
-            for (var i = 0; i < results.length; i++) {
-            resultsList.innerHTML += "<p>"+results[i]+"</p>";
-            }
-  
-        response.status(200).json(results.rows);
-        response.write.json(results.rows);
-    });
+  pool.query('SELECT * FROM Person ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
 }
-    
-
-
-
-//-------------------------------------------------------------//
 
 const getPersonById = (request, response) => {
   const id = parseInt(request.params.id)
@@ -47,10 +25,10 @@ const getPersonById = (request, response) => {
   })
 }
 
-const addPerson = (request, response) => {
+const createPerson = (request, response) => {
   const { name, email } = request.body
 
-  pool.query('INSERT INTO Person (firstname, lastname) VALUES ($1, $2)', [name, email], (error, results) => {
+  pool.query('INSERT INTO Person (name, email) VALUES ($1, $2)', [name, email], (error, results) => {
     if (error) {
       throw error
     }
@@ -63,8 +41,8 @@ const updatePerson = (request, response) => {
   const { name, email } = request.body
 
   pool.query(
-    'UPDATE Person SET firstname = $1, lastname = $2 WHERE id = $3',
-    [firstname, lastname, id],
+    'UPDATE Person SET name = $1, email = $2 WHERE id = $3',
+    [name, email, id],
     (error, results) => {
       if (error) {
         throw error
@@ -86,9 +64,9 @@ const deletePerson = (request, response) => {
 }
 
 module.exports = {
-  getPersons: getPersons,
-  getPersonById: getPersonById,
-  addPerson: addPerson,
-  updatePerson: updatePerson,
-  deletePerson: deletePerson
+  getPersons,
+  getPersonById,
+  createPerson,
+  updatePerson,
+  deletePerson,
 }

@@ -1,0 +1,13 @@
+Create an HTML page with a search box and a button. When the button is clicked, use client side JavaScript to get the value from the search box, and log it to the console.
+
+Use AJAX to access the OMDB API for the provided search value. When the result comes back, log it to the console to verify that the API call is working.
+
+Use client side JavaScript to update the HTML page to show the list of movies, without causing the page to refresh.
+
+STRETCH CHALLENGE
+
+Add a "View Details" link or button next to each movie result in the list. If this button is clicked, log the movie ID to the console.
+
+Add an AJAX call for your View Details functionality to call into the OMDB API for that particular movie. When the result is retrieved, log it to the console.
+
+Use client side JavaScript to update the page and display more information about the movie including an image and more detailed information as provided by the API.

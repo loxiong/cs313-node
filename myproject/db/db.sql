@@ -39,3 +39,26 @@ VALUES
     ('Read Moroni 10'),
     ('Write a Reflection');
     
+    
+    
+/* This table will establish the many-to-many relationship between PERSON table and the TODO table*/
+CREATE TABLE person_todo (
+    person_id   INTEGER REFERENCES person(id),   
+    todo_id     INTEGER REFERENCES todo(id)
+);
+    
+INSERT INTO person_todo (person_id, todo_id)
+VALUES
+    (1, 2),
+    (1, 3),
+    (1, 4),
+    (1, 5),
+    (1, 6),
+    (1, 7),
+    (1, 8),
+    (1, 9),
+    (1, 10),
+    (4, 17);
+    
+
+    

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Test</title>
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+        <script src='scriptures-clientside.js'></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    </head>
+  <body>
+        <div class="container">
+            <h1>Search the Scriptures</h1>
+            
+            <input type='text' id='book' placeholder='Book'>
+            <button onclick='searchByBook()'>Search By Book</button>
+            
+            <br><br>
+                
+            <input type='text' id='topic' placeholder='Topic'>
+            <button onclick='searchByTopic()'>Search By Topic</button>
+            
+            <div>
+                <h2>Results</h2>
+                <ul id='ulScriptures'>
+                
+                </ul>
+            </div>
+            
+        </div>
+  </body>
+</html>
