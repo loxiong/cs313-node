@@ -6,30 +6,18 @@ const pool = new Pool({connectionString: db_url});
 
 
 const getPersons = (request, response) => {
-    var sql = "SELECT * FROM person";
-
-    pool.query(sql, function(err, result) {
-        // If an error occurred...
-        if (err) {
-            console.log("Error in query: ")
-            console.log(err);
-        }
-
-        // Log this to the console for debugging purposes.
-        console.log("Back from DB with result:");
-        console.log(result.rows);
-        
-        var resultsList = document.getElementById("results");
-            resultsList.innerHTML = "";
-            
-            for (var i = 0; i < results.length; i++) {
-            resultsList.innerHTML += "<p>"+results[i]+"</p>";
-            }
-  
-        response.status(200).json(results.rows);
-        response.write.json(results.rows);
-    });
+  pool.query('SELECT * FROM person ORDER BY id ASC', (error, results) => {
+    if (error) {
+      throw error
+    }
+    // Log this to the console for debugging purposes.
+    console.log("Back from DB with result:");
+    console.log(results.rows);
+    response.status(200).json(results.rows)
+  })
 }
+
+
     
 
 
