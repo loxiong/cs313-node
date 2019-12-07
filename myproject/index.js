@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 
-
+//const { Pool } = require('pg');
 const Pool = require('pg').Pool
 const connectionString = process.env.DATABASE_URL || 3000;
 const pool = new Pool({connectionString: connectionString});
