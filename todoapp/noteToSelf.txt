@@ -1,0 +1,6 @@
+--endpoints get, post, delete working
+
+--created heroku app and database
+--connection to database successful
+
+--I haven't created a table for to do tasks yet
