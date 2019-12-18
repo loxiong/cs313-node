@@ -4,6 +4,8 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieSession = require('cookie-session');
 
 require('dotenv').config();
 
@@ -12,6 +14,24 @@ require('dotenv').config();
 const Pool = require('pg').Pool
 const connectionString = process.env.DATABASE_URL || 3000;
 const pool = new Pool({connectionString: connectionString});
+
+// Use the session middleware
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+
+// Access the session as req.session
+app.get('/', function(req, res, next) {
+  if (req.session.views) {
+    req.session.views++
+    res.setHeader('Content-Type', 'text/html')
+    res.write('<p>views: ' + req.session.views + '</p>')
+    res.write('<p>expires in: ' + (req.session.cookie.maxAge / 1000) + 's</p>')
+    res.end()
+  } else {
+    req.session.views = 1
+    res.end('Welcome to your session of SIMPLE TO DO APP. Refresh!')
+  }
+});
+
 
 //require the controller file
 const todoController = require('./controllers/todoController');
@@ -35,7 +55,7 @@ todoController(app);
 
 
 //TEST CONNECTION TO THE DATABASE
-var sql = "SELECT * FROM scriptures";
+var sql = "SELECT * FROM todo";
 pool.query(sql, function(err, result) {
     // If an error occurred...
     if (err) {
