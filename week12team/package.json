@@ -1,0 +1,17 @@
+{
+  "name": "week12team",
+  "version": "1.0.0",
+  "description": "Practice using middleware and sessions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "clo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "path": "^0.12.7",
+    "session": "^0.1.0"
+  }
+}
